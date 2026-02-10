@@ -9,9 +9,9 @@
 -- Select Data
 
 
-Select country, date, total_cases, new_cases, total_deaths, population
-From SQL_Project..Covid19Death
-order by 1,2
+--Select country, date, total_cases, new_cases, total_deaths, population
+--From SQL_Project..Covid19Death
+--order by 1,2
 
 
 
@@ -20,14 +20,25 @@ order by 1,2
 Select country, date, total_cases, total_deaths, 
 (CAST(total_deaths AS FLOAT)/NULLIF(total_cases, 0))*100 as DeathPercentage
 From SQL_Project..Covid19Death
-Where country like '%states%'
+Where country like '%vietnam%'
 order by 1,2
 
 
 -- Checking total cases vs population
 -- Shows percentage of population got Covid
 Select country, date, total_cases, population, 
-(total_cases/population)*100 as DeathPercentage
+(CAST(total_cases AS FLOAT)/population)*100 as PercentPopulationInfected
 From SQL_Project..Covid19Death
-Where country like '%states%'
+Where country like '%vietnam%'
 order by 1,2
+
+
+-- Checking at countries with highest infection rate compared to population
+
+Select country, MAX(total_cases) as HighestInfectionCount, population, 
+MAX((CAST(total_cases AS FLOAT)/population))*100 as PercentPopulationInfected
+From SQL_Project..Covid19Death
+Group by country, population
+order by PercentPopulationInfected desc
+
+-- Showing
