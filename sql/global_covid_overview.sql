@@ -122,7 +122,6 @@ From SQL_Project..Covid19Death dea
 Join SQL_Project..Covid19Vaccination vac
 	On dea.country = vac.country
 	and dea.date = vac.date
---where dea.continent is not null
 
 Select *, (RollingPeopleVaccinated/population)*100 as percent_vaccination
 From #PercentPopulationVaccinated
