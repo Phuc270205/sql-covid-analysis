@@ -30,7 +30,7 @@ The main cleaning tasks completed in this project were:
 ## Dataset
 The dataset used in this project is:
 
-- `SQL_Project.dbo.NashvilleHousing`
+- `SQL_Project.dbo.NashvilleHousing` and the raw dataset is `NashVille_Housing.sql`                             
 
 This dataset contains housing-related fields such as:
 - parcel ID
